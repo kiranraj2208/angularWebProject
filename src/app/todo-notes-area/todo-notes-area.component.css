@@ -1,0 +1,19 @@
+
+.todoTable{
+	margin-left: 40%;
+}
+
+.mat-tab-group {
+	margin-bottom: 48px;
+}
+
+.notes-table {
+	margin: 0px auto;
+	border-collapse: collapse;
+	user-select: none;
+}
+
+.center-block {
+	margin: auto;
+	display: block;
+  }
