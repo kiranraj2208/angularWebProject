@@ -36,7 +36,8 @@
 	<mat-tab label="Active">
 		<table class="notes-table">
 				<tbody>
-					<tr *ngFor="let num of completed; let ind=index;trackBy:customTrackBy" class="notes-row">
+					<tr *ngFor="let num of tasks; let ind=index;trackBy:customTrackBy" class="notes-row">
+						<td *ngIf="!completed[ind]">
 							<div class="taskDiv" 
 								(mouseenter)="mouseEntered(ind)"
 								 (mouseleave)="mouseLeft(ind)">
@@ -59,6 +60,7 @@
 									(click)="deleteTask(ind)"
 									 src="assets/cancel.png" width="15px" height="15px">
 								</div>
+							</td>
 					</tr>
 				</tbody>
 		</table>
@@ -67,7 +69,7 @@
 	<mat-tab label="Completed">
 		<table class="notes-table">
 				<tbody>
-					<tr *ngFor="let num of completed; let ind=index; trackBy:customTrackBy" class="notes-row">
+					<tr *ngFor="let num of tasks; let ind=index; trackBy:customTrackBy" class="notes-row">
 							<td *ngIf="completed[ind]">
 								<div class="taskDiv" 
 								(mouseenter)="mouseEntered(ind)"
