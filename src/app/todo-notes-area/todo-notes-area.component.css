@@ -20,7 +20,12 @@
 
  .input{
  	border:	none;
+ 	text-decoration: none;
  	width: 80%;
+ }
+
+ .input:focus{
+ 	outline: none;
  }
 
  .taskDiv{
@@ -31,4 +36,12 @@
  }
  .taskDiv : hover{
  	width: 200%;
+ }
+
+ .notComplete{
+ 	text-decoration: none;
+ }
+
+ .complete{
+ 	text-decoration: line-through;
  }

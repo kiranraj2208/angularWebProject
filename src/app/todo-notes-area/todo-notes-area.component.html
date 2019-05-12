@@ -16,13 +16,15 @@
 									<img *ngIf="completed[ind]"
 									(click)="onClick(ind)" src="assets/tick.png" width="30px" height="30px">
 									
-									<input class="input" type="text" name="tasks" 
+									<input class="input" type="text" name="tasks"
+									[ngClass]="completed[ind]? 'complete' : 'notComplete'" 
 									[(ngModel)]="tasks[ind]"
 									name="task"
 									ngModel
 									#task="ngModel"> 
 									
 									<img *ngIf="entered[ind]"
+									(click)="deleteTask(ind)"
 									 src="assets/cancel.png" width="15px" height="15px">
 								</div>
 							</td>
@@ -46,15 +48,17 @@
 									<img *ngIf="completed[ind]"
 									(click)="onClick(ind)" src="assets/tick.png" width="30px" height="30px">
 									
-									<input class="input" type="text" name="tasks" 
+									<input class="input" type="text" name="tasks"
+									[ngClass]="completed[ind]? 'complete' : 'notComplete'" 
 									[(ngModel)]="tasks[ind]"
 									name="task"
 									ngModel
 									#task="ngModel"> 
 									
 									<img *ngIf="entered[ind]"
+									(click)="deleteTask(ind)"
 									 src="assets/cancel.png" width="15px" height="15px">
-							</div>
+								</div>
 					</tr>
 				</tbody>
 		</table>
@@ -64,7 +68,7 @@
 		<table class="notes-table">
 				<tbody>
 					<tr *ngFor="let num of completed; let ind=index; trackBy:customTrackBy" class="notes-row">
-							<td>
+							<td *ngIf="completed[ind]">
 								<div class="taskDiv" 
 								(mouseenter)="mouseEntered(ind)"
 								 (mouseleave)="mouseLeft(ind)">
@@ -83,6 +87,7 @@
 									#task="ngModel"> 
 									
 									<img *ngIf="entered[ind]"
+									(click)="deleteTask(ind)"
 									 src="assets/cancel.png" width="15px" height="15px">
 								</div>
 							</td>

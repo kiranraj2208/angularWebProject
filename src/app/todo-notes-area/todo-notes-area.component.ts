@@ -9,9 +9,12 @@ export class TodoNotesAreaComponent{
   constructor() {
    }
    size = 2;
+   //for checking the tick mark
    completed = new Array(this.size);
+   //to hover the cancel mark
    entered = new Array(this.size);
-   tasks = ['hello', 'world'];//new Array(this.size);
+   //tasks string
+   tasks = new Array(this.size);
 
 
    // get img(){ 
@@ -30,6 +33,12 @@ export class TodoNotesAreaComponent{
  	this.entered[ind] = 0;
  	console.log(ind);
  	return this.entered[ind];
+ }
+
+ deleteTask(ind: number){
+ 	console.log("Delete task");
+ 	this.tasks.splice(ind, 1);
+ 	this.completed.splice(ind, 1);
  }
 
 left(){
