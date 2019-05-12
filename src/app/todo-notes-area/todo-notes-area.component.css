@@ -17,3 +17,18 @@
 	margin: auto;
 	display: block;
   }
+
+ .input{
+ 	border:	none;
+ 	width: 80%;
+ }
+
+ .taskDiv{
+ 	width: 130%;
+ 	padding: 4px;
+ 	border: 1px black solid;
+ 	border-radius: 20px;
+ }
+ .taskDiv : hover{
+ 	width: 200%;
+ }

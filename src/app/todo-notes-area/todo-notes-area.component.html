@@ -3,12 +3,27 @@
 	<mat-tab label="All">
 		<table class="notes-table">
 				<tbody>
-					<tr *ngFor="let num of ['first', 'second', 'third']" class="notes-row">
+					<tr *ngFor="let task of tasks; let ind=index;trackBy:customTrackBy" class="notes-row">
 							<td>
-								<div>
-									<button>tick</button>
-									This is the {{ num }} task
-									<button>X</button>
+								<div class="taskDiv" 
+								(mouseenter)="mouseEntered(ind)"
+								 (mouseleave)="mouseLeft(ind)">
+									
+									<img *ngIf="!completed[ind]" id="circle" 
+									(click)="onClick(ind)"
+									 src="assets/circle.png" width="30px" height="30px">
+									
+									<img *ngIf="completed[ind]"
+									(click)="onClick(ind)" src="assets/tick.png" width="30px" height="30px">
+									
+									<input class="input" type="text" name="tasks" 
+									[(ngModel)]="tasks[ind]"
+									name="task"
+									ngModel
+									#task="ngModel"> 
+									
+									<img *ngIf="entered[ind]"
+									 src="assets/cancel.png" width="15px" height="15px">
 								</div>
 							</td>
 					</tr>
@@ -19,14 +34,27 @@
 	<mat-tab label="Active">
 		<table class="notes-table">
 				<tbody>
-					<tr *ngFor="let num of ['first', 'second', 'third']" class="notes-row">
-							<td>
-								<div>
-									<button>tick</button>
-									This is the {{ num }} task
-									<button>X</button>
-								</div>
-							</td>
+					<tr *ngFor="let num of completed; let ind=index;trackBy:customTrackBy" class="notes-row">
+							<div class="taskDiv" 
+								(mouseenter)="mouseEntered(ind)"
+								 (mouseleave)="mouseLeft(ind)">
+									
+									<img *ngIf="!completed[ind]" id="circle" 
+									(click)="onClick(ind)"
+									 src="assets/circle.png" width="30px" height="30px">
+									
+									<img *ngIf="completed[ind]"
+									(click)="onClick(ind)" src="assets/tick.png" width="30px" height="30px">
+									
+									<input class="input" type="text" name="tasks" 
+									[(ngModel)]="tasks[ind]"
+									name="task"
+									ngModel
+									#task="ngModel"> 
+									
+									<img *ngIf="entered[ind]"
+									 src="assets/cancel.png" width="15px" height="15px">
+							</div>
 					</tr>
 				</tbody>
 		</table>
@@ -35,12 +63,27 @@
 	<mat-tab label="Completed">
 		<table class="notes-table">
 				<tbody>
-					<tr *ngFor="let num of ['first', 'second', 'third']" class="notes-row">
+					<tr *ngFor="let num of completed; let ind=index; trackBy:customTrackBy" class="notes-row">
 							<td>
-								<div>
-									<button>tick</button>
-									This is the {{ num }} task
-									<button>X</button>
+								<div class="taskDiv" 
+								(mouseenter)="mouseEntered(ind)"
+								 (mouseleave)="mouseLeft(ind)">
+									
+									<img *ngIf="!completed[ind]" id="circle" 
+									(click)="onClick(ind)"
+									 src="assets/circle.png" width="30px" height="30px">
+									
+									<img *ngIf="completed[ind]"
+									(click)="onClick(ind)" src="assets/tick.png" width="30px" height="30px">
+									
+									<input class="input" type="text" name="tasks" 
+									[(ngModel)]="tasks[ind]"
+									name="task"
+									ngModel
+									#task="ngModel"> 
+									
+									<img *ngIf="entered[ind]"
+									 src="assets/cancel.png" width="15px" height="15px">
 								</div>
 							</td>
 					</tr>
@@ -51,4 +94,4 @@
 </mat-tab-group>
 
 
-<input type="text" name="task" class="center-block"><br>
+<input type="text" name="tasks" class="center-block"><br>
