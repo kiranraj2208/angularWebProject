@@ -100,5 +100,10 @@
 
 </mat-tab-group>
 
-
-<input type="text" name="tasks" class="center-block"><br>
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+<input type="text" 
+#taskInput="ngModel"
+ngModel
+name="taskInput"
+ class="center-block"><br>
+</form>
