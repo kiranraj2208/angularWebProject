@@ -1,8 +1,6 @@
 import { Component, Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 
-// import {Observable} from 'rxjs/Observable';
-// import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-todo-notes-area',
@@ -21,7 +19,6 @@ export class TodoNotesAreaComponent{
    //tasks string
    tasks = new Array(this.size);
    private url = "http://localhost:3000";
-   taskInput = '';
 
    // get img(){ 
    	
@@ -29,10 +26,7 @@ export class TodoNotesAreaComponent{
  onClick(ind : number){
  	console.log("Clicked", ind);
  	this.completed[ind] = !this.completed[ind];
- 	this.http.post('http://localhost:3000/insertTask', 
-     {index:0, task:"new task", completed:0}).subscribe((res) =>{
-
-   })
+ 
  	return this.completed[ind];
  	
  }
@@ -72,7 +66,10 @@ customTrackBy(index:number, obj:any): any{
   onSubmit(form){
   this.tasks.push(form.value.taskInput);
   this.completed.push(0);
-  console.log(this.taskInput);
+  this.http.post('http://localhost:3000/insertTask', 
+     {index: (this.tasks.length-1), task:form.value.taskInput, completed:0}).subscribe((res) =>{
+
+   })
 }
 
 }
