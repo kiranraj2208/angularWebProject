@@ -1,3 +1,12 @@
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" class="form">
+<input type="text" 
+#taskInput="ngModel"
+ngModel
+name="taskInput"
+ class="input-group mb-3"
+ placeholder="Task to be done"><br>
+</form>
+
 <mat-tab-group mat-align-tabs="center">
 	
 	<mat-tab label="All">
@@ -5,9 +14,10 @@
 				<tbody>
 					<tr *ngFor="let task of tasks; let ind=index;trackBy:customTrackBy" class="notes-row">
 							<td>
-								<div class="taskDiv" 
-								(mouseenter)="mouseEntered(ind)"
-								 (mouseleave)="mouseLeft(ind)">
+								<div ngInit="hovering=false"
+								(mouseenter)="mouseEntered(ind);hovering=true"
+								 (mouseleave)="mouseLeft(ind);hovering=false"
+								 [ngClass]="hovering?'taskDiv1':'taskDiv'">
 									
 									<img *ngIf="!completed[ind]" id="circle" 
 									(click)="onClick(ind)"
@@ -100,10 +110,3 @@
 
 </mat-tab-group>
 
-<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
-<input type="text" 
-#taskInput="ngModel"
-ngModel
-name="taskInput"
- class="center-block"><br>
-</form>

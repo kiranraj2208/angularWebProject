@@ -31,15 +31,26 @@ app.post('/insertTask', (req, res) => {
 	res.end();
 });
 
-app.get('/deleteTask',  (req, res) => {
+app.post('/deleteTask',  (req, res) => {
 	var db = mongo.connect("mongodb://127.0.0.1:27017/angular", (err, db) => {
 	if(err) throw err;
 	console.log("connected to mongodb");
 	collection = db.collection('tasks');
-	collection.remove({index:req.query.index});
-	console.log(`task with index ${req.query.index} deleted`);
+	collection.remove({index:req.body.index});
+	console.log(`task with index ${req.body.index} deleted`);
 });
-	res.end(`task with index ${req.body.index} deleted`);
+	res.end();
 });
+
+app.post('/updateTask', (req, res) => {
+	var db = mongo.connect("mongodb://127.0.0.1:27017/angular", (err, db) => {
+	if(err) throw err;
+	console.log("connected to mongodb");
+	collection = db.collection('tasks');
+	collection.update({index:req.body.index}, {$set:{completed:req.body.completed}});
+	console.log(`task with index ${req.body.index} updated`);
+});
+	res.end();
+})
 
 app.listen(3000);

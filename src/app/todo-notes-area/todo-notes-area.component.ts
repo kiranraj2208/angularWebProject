@@ -11,7 +11,7 @@ import {HttpClient} from '@angular/common/http'
 export class TodoNotesAreaComponent{
   constructor(private http: HttpClient) {
    }
-   size = 2;
+   size = 0;
    //for checking the tick mark
    completed = new Array(this.size);
    //to hover the cancel mark
@@ -26,7 +26,12 @@ export class TodoNotesAreaComponent{
  onClick(ind : number){
  	console.log("Clicked", ind);
  	this.completed[ind] = !this.completed[ind];
- 
+
+   this.http.post('http://localhost:3000/updateTask', 
+     {index: ind, completed:this.completed[ind]}).subscribe((res) =>{
+
+   });
+
  	return this.completed[ind];
  	
  }
@@ -51,6 +56,11 @@ export class TodoNotesAreaComponent{
  	console.log("Delete task");
  	this.tasks.splice(ind, 1);
  	this.completed.splice(ind, 1);
+
+  this.http.post('http://localhost:3000/deleteTask', 
+     {index: ind}).subscribe((res) =>{
+
+   });
  }
 
 
@@ -69,7 +79,7 @@ customTrackBy(index:number, obj:any): any{
   this.http.post('http://localhost:3000/insertTask', 
      {index: (this.tasks.length-1), task:form.value.taskInput, completed:0}).subscribe((res) =>{
 
-   })
+   });
 }
 
 }

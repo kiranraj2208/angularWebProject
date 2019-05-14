@@ -8,7 +8,7 @@
 }
 
 .notes-table {
-	margin: 0px auto;
+	margin-left: 39%;
 	border-collapse: collapse;
 	user-select: none;
 }
@@ -34,9 +34,13 @@
  	border: 1px black solid;
  	border-radius: 20px;
  }
- .taskDiv : hover{
- 	width: 200%;
- }
+
+.taskDiv1{
+	width: 130%;
+ 	padding: 4px;
+ 	border: 2px black solid;
+ 	border-radius: 20px;
+}
 
  .notComplete{
  	text-decoration: none;
@@ -44,4 +48,19 @@
 
  .complete{
  	text-decoration: line-through;
+ }
+
+ .input-group{
+ 	width: 40%;
+ 	border: 1px black dotted;
+ 	border-radius: 20px;
+ 	padding: 5px;
+ }
+
+.input-group:focus{
+	outline: none;
+}
+
+ .form{
+ 	margin-left: 38%;
  }
