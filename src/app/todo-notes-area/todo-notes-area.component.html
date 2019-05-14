@@ -17,7 +17,7 @@ name="taskInput"
 								<div ngInit="hovering=false"
 								(mouseenter)="mouseEntered(ind);hovering=true"
 								 (mouseleave)="mouseLeft(ind);hovering=false"
-								 [ngClass]="hovering?'taskDiv1':'taskDiv'">
+								 [ngClass]="entered[ind]?'taskDiv1':'taskDiv'">
 									
 									<img *ngIf="!completed[ind]" id="circle" 
 									(click)="onClick(ind)"
